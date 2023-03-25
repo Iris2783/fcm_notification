@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "503109356611",
+    "project_id": "fcmnotification-77c49",
+    "storage_bucket": "fcmnotification-77c49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503109356611:android:d8e2e8c9cb37b91462d8f6",
+        "android_client_info": {
+          "package_name": "com.example.fcm_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503109356611-8uaba453e4tboaa0sbna9773146kmmms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAavz_sBrpybX3NSMeHf1zWMnXMkTjM6Yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503109356611-8uaba453e4tboaa0sbna9773146kmmms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503109356611-3rclgele36fvi1ruo8ml5a0m5o37aim1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fcmNotification"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503109356611:android:6c38da907243bee862d8f6",
+        "android_client_info": {
+          "package_name": "com.example.fcm_notification_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503109356611-8uaba453e4tboaa0sbna9773146kmmms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAavz_sBrpybX3NSMeHf1zWMnXMkTjM6Yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503109356611-8uaba453e4tboaa0sbna9773146kmmms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503109356611-3rclgele36fvi1ruo8ml5a0m5o37aim1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fcmNotification"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
