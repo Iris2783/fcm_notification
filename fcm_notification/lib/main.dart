@@ -2,7 +2,7 @@ import 'package:fcm_notification/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+void main() async {//FlutterFireの公式ページからコピペ。以下のコードでfirebaseと連携している
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
