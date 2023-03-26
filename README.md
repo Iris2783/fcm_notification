@@ -13,6 +13,10 @@ FlutterFire : https://firebase.flutter.dev/docs/overview
    ※ 初回のfirebase configのところでfirebase_options.dartが作成されなかったが、もう一度firebase configを実施すると作成された。
    
    → 一通りの手順が完了したらflutter cleanを実行してからビルド。
+   
+   → Androidのビルドでうまくいかずにエラーが出て四苦八苦していたが、修正完了。以下のYoutubeを参考に修正。
+   
+   https://www.youtube.com/watch?v=54vgoPgB8xE
      
 
 2. Firebaseの認証およびFCMの設定。WebSocketについても確認。　youtubeで内容の確認。
