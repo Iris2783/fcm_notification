@@ -3,6 +3,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+//以下のコードはバックグラウンド時に通知を処理する関数　フォアグランド時には36行目のonMessageリスナーが実行され通知がが送られる
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  print("Handling a background message: ${message.messageId}");
+}
+
 void main() async {
   //FlutterFireの公式ページからコピペ。以下のコードでfirebaseと連携している
   WidgetsFlutterBinding.ensureInitialized(); //WidgetFlutterBindingクラスをensureInitializedメソッドで初期化している　Firebaseとの連携では必須の初期化
@@ -10,20 +19,29 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   ); //プラットフォームに即したオプションを自動で設定するためにFirebase SDKを初期化している
 
-  FirebaseMessaging messaging = FirebaseMessaging.instance; //Firabasemessageインスタンスを作成。FCMサービスにアクセスするために使用される。
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);//バックグラウンドで受信したFCMを_firebaseMessagingBackgroundHandler関数で処理する記述
+
+  FirebaseMessaging messaging = FirebaseMessaging.instance; //FirebaseMessageインスタンスを作成。FCMサービスにアクセスするために使用される。
 
   NotificationSettings settings = await messaging.requestPermission(
     //ユーザーがアプリケーションで通知を許可してもらう際の設定を記載している。FCMを使用してモバイルアプリで通知を受信するための設定。
-    alert: true, //新しい通知がきたときにアラートを表示させるかどうか
-    announcement: false, //スクリーンリーダーに通知のアナウンスを行うかどうか
-    badge: true, //通知が来たときにアプリアイコンのバッジに数値を表示するかどうか
-    carPlay: false, //CarPlay上での通知の表示を許可するかどうか
-    criticalAlert: false, //重要な通知を表示することができるかどうか
-    provisional: false, //仮想通知を許可するかどうか 仮想通知はアプリがまだインストールされていない場合に表示される
-    sound: true, //通知が届いたときにサウンドを再生するかどうか
+    alert: true, //新しい通知がきたときにアラートを表示させるかどうかの設定
+    announcement: false, //スクリーンリーダーに通知のアナウンスを行うかどうかの設定
+    badge: true, //通知が来たときにアプリアイコンのバッジに数値を表示するかどうかの設定
+    carPlay: false, //CarPlay上での通知の表示を許可するかどうかの設定
+    criticalAlert: false, //重要な通知を表示することができるかどうかの設定
+    provisional: false, //仮想通知を許可するかどうかの設定 仮想通知はアプリがまだインストールされていない場合に表示される
+    sound: true, //通知が届いたときにサウンドを再生するかどうかの設定
   );
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //以下のコードはアプリがフォアグラウンドで実行されている場合に通知を受け取る処理。フォアグラウンドとはアプリを実行している画面の事。
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message.data}');
 
-  print('User granted permission: ${settings.authorizationStatus}');
+    if (message.notification != null) {
+      print('Message also contained a notification: ${message.notification}');
+    }
+  });
   runApp(const MyApp());
 }
 
